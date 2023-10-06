@@ -2,14 +2,19 @@
 
 This folder contains all of the Gradio UI and component source code.
 
-- [set up](#setup)
-- [running the application](#running-the-application)
-- [local development](#local-development)
-- [building for production](#building-for-production)
-- [quality checks](#quality-checks)
-- [ci checks](#ci-checks)
+- [gradio-ui](#gradio-ui)
+  - [Set up](#set-up)
+  - [Running the application](#running-the-application)
+  - [Local development](#local-development)
+  - [Building for production](#building-for-production)
+  - [Quality checks](#quality-checks)
+    - [Formatting](#formatting)
+    - [Type checking](#type-checking)
+  - [CI checks](#ci-checks)
+    - [Static checks](#static-checks)
+    - [Functional test](#functional-test)
 
-## setup
+## Set up
 
 This folder is managed as 'monorepo' a multi-package repository which make dependency management very simple. In order to do this we use `pnpm` as our package manager.
 
@@ -17,7 +22,7 @@ Make sure [`pnpm`](https://pnpm.io/) is installed by [following the installation
 
 You will also need `node` which you probably already have
 
-## running the application
+## Running the application
 
 Install all dependencies:
 
@@ -27,7 +32,7 @@ pnpm i
 
 This will install the dependencies for all packages and link any local packages
 
-## local development
+## Local development
 
 To develop locally, open two terminal tabs from the root of the repository.
 
@@ -46,7 +51,7 @@ Run the web app:
 pnpm dev
 ```
 
-## building for production
+## Building for production
 
 Run the build:
 
@@ -56,11 +61,11 @@ pnpm build
 
 This will create the necessary files in `js/app/public` and also in `gradio/templates/frontend`.
 
-## quality checks
+## Quality checks
 
 The repos currently has two quality checks that can be run locally and are run in CI.
 
-### formatting
+### Formatting
 
 Formatting is handled by [`prettier`](https://prettier.io/) to ensure consistent formatting and prevent style-focused conversations. Formatting failures will fails CI and should be reoslve before merging.
 
@@ -76,7 +81,7 @@ If you have formatting failures then you can run the following command to fix th
 pnpm format:write
 ```
 
-### type checking
+### Type checking
 
 We use [TypeScript](https://www.typescriptlang.org/) to provide static types to javascript code. These checks are also run in CI.
 
@@ -86,11 +91,11 @@ to typecheck the code:
 pnpm ts:check
 ```
 
-## ci checks
+## CI checks
 
 Currently the following checks are run in CI:
 
-### static checks
+### Static checks
 
 - Format check (`pnpm format:check`)
 - Build css (`pnpm css`)
@@ -98,7 +103,7 @@ Currently the following checks are run in CI:
 - Type check (`pnpm ts:check`)
 - Unit tests (`pnpm test:run`)
 
-### functional test
+### Functional test
 
 ```
 pip install -r demo/outbreak_forecast/requirements.txt
